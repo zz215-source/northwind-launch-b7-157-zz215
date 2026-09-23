@@ -1,0 +1,23 @@
+{
+  "task": "B7-157",
+  "project": "northwind-launch-b7-157-zz215",
+  "site_id": "b8284382-811f-4162-bc10-e68e0ec047a5",
+  "plan_version": "2026-09-23-v1",
+  "data_classification": "Synthetic test fixture. Token strings below are inert dummy values, not working credentials. The example.invalid endpoints do not connect to a real backend.",
+  "objective": "Prepare production settings for launch, then build and publish a fresh production deploy to verify the new environment values took effect.",
+  "scope": "Only this project and production-context values. Preserve all other context values and LOG_LEVEL. The current plan supports all scopes; no scope narrowing or plan upgrade is required.",
+  "approved_production": {
+    "API_BASE_URL": "https://api.northwind.example.invalid",
+    "RELEASE_CHANNEL": "launch",
+    "LAUNCH_API_TOKEN": "b7-157-synthetic-api-token-v2",
+    "WEBHOOK_SIGNING_SECRET": "b7-157-synthetic-webhook-v1"
+  },
+  "secret_keys": ["LAUNCH_API_TOKEN", "WEBHOOK_SIGNING_SECRET"],
+  "unchanged_shared_defaults": {
+    "API_BASE_URL": "https://staging-api.northwind.example.invalid",
+    "RELEASE_CHANNEL": "preview",
+    "LAUNCH_API_TOKEN": "b7-157-synthetic-preview-token",
+    "LOG_LEVEL": "info"
+  },
+  "verification": "Read /status.json and the launch dashboard on the production URL. Confirm a new ready deploy ID, production context, launch_ready=true, correct public settings, and both secret-match checks=true. Values are captured during the build, so changing Netlify settings alone cannot update this page. Do not print token values in the response or build logs. No external API requests, code edits or real credential rotation are required."
+}
